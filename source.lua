@@ -838,10 +838,7 @@ function Kavo.CreateLib(kavName, themeList)
                 TextBox.Text = ""
                 TextBox.TextColor3 = themeList.SchemeColor
                 TextBox.TextSize = 12.000
-
-TextBox:GetPropertyChangedSignal("Text"):Connect(function()
-	TextBox.Text = TextBox.Text:gsub('[^%d{.}]', '')
-)
+				
                 UICorner_2.CornerRadius = UDim.new(0, 4)
                 UICorner_2.Parent = TextBox
 
