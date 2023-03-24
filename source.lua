@@ -783,6 +783,9 @@ function Kavo.CreateLib(kavName, themeList)
                 local viewInfo = Instance.new("ImageButton")
                 local write = Instance.new("ImageLabel")
                 local TextBox = Instance.new("TextBox")
+				TextBox:GetPropertyChangedSignal("Text"):Connect(function()
+	TextBox.Text = TextBox.Text:gsub('[^%d{.}]', '')
+)
                 local UICorner_2 = Instance.new("UICorner")
                 local togName = Instance.new("TextLabel")
 
@@ -917,6 +920,9 @@ function Kavo.CreateLib(kavName, themeList)
                 end)
 
                 TextBox.FocusLost:Connect(function(EnterPressed)
+						TextBox:GetPropertyChangedSignal("Text"):Connect(function()
+	TextBox.Text = TextBox.Text:gsub('[^%d{.}]', '')
+)
                     if focusing then
                         for i,v in next, infoContainer:GetChildren() do
                             Utility:TweenObject(v, {Position = UDim2.new(0,0,2,0)}, 0.2)
@@ -930,6 +936,7 @@ function Kavo.CreateLib(kavName, themeList)
                         callback(TextBox.Text)
                         wait(0.18)
                         TextBox.Text = ""  
+							
                     end
                 end)
 
